@@ -239,7 +239,7 @@ body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#F5F0FF;min-heigh
     <span class="badge b4">Atividade 4</span>
     <span class="act-name">🗂️ RAM ou HD/SSD?</span>
   </div>
-  <p class="act-desc">Selecione um cartão e clique na caixa certa. Cada situação pertence à <strong>RAM</strong> (memória temporária) ou ao <strong>HD/SSD</strong> (armazenamento permanente)?</p>
+  <p class="act-desc">Escolha um cartão e clique na caixa certa. Cada coisa é da <strong>RAM</strong> (guarda por pouco tempo) ou do <strong>HD/SSD</strong> (guarda para sempre)?</p>
   <div class="cl-pool" id="cl-pool"></div>
   <div class="cl-zones">
     <div class="cl-zone zram" id="zona-ram" onclick="dropCl('ram')">
@@ -300,9 +300,9 @@ body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#F5F0FF;min-heigh
     <div class="rrow">✅ Acertos: <span id="r-ac">—</span></div>
     <div class="rrow">❌ Erros: <span id="r-er">—</span></div>
     <div class="rrow">📊 Aproveitamento: <span id="r-pct">—</span></div>
-    <div class="rrow" style="margin-top:10px;font-weight:800;">🏆 Habilidades dominadas:</div>
+    <div class="rrow" style="margin-top:10px;font-weight:800;">🏆 O que você já sabe bem:</div>
     <div id="r-ok" style="margin:4px 0 10px;"></div>
-    <div class="rrow" style="font-weight:800;">📚 Habilidades para retomar:</div>
+    <div class="rrow" style="font-weight:800;">📚 O que precisa estudar mais:</div>
     <div id="r-nok" style="margin:4px 0;"></div>
   </div>
   <button class="final-btn" style="margin-top:1rem;background:rgba(255,255,255,.22);" onclick="location.reload()">🔄 Refazer atividade</button>
@@ -319,12 +319,12 @@ const actMax   = {1:2,2:2,3:2,4:2,5:1,6:1};
 const actScores= {1:0,2:0,3:0,4:0,5:0,6:0};
 const actDone  = {1:false,2:false,3:false,4:false,5:false,6:false};
 const skills   = {
-  1:'Associar conceitos (RAM, HD, arquivo)',
-  2:'Distinguir informações corretas (V/F)',
-  3:'Completar frases sobre memória',
-  4:'Classificar RAM × HD/SSD',
-  5:'Ordenar etapas de salvamento',
-  6:'Identificar intruso por categoria'
+  1:'Ligar as ideias certas (RAM, HD, arquivo)',
+  2:'Saber o que é verdadeiro ou falso',
+  3:'Completar frases sobre a memória do computador',
+  4:'Saber a diferença entre RAM e HD/SSD',
+  5:'Colocar em ordem como se salva um arquivo',
+  6:'Descobrir qual coisa não combina com o grupo'
 };
 let totAc=0, totEr=0;
 
@@ -345,10 +345,10 @@ function setFb(id,msg,cls){
    Conceito ↔ Definição  (4 pares)
 ══════════════════════════════════════════ */
 const pairs=[
-  {id:'A', left:{ico:'🧠',txt:'Memória RAM'},        right:{ico:'🕐',txt:'Guarda dados temporariamente enquanto o computador está ligado.'}},
-  {id:'B', left:{ico:'💾',txt:'HD ou SSD'},           right:{ico:'📦',txt:'Guarda arquivos de forma permanente, mesmo desligado.'}},
-  {id:'C', left:{ico:'📄',txt:'Arquivo'},              right:{ico:'💿',txt:'Conjunto de dados salvo com um nome, como foto.jpg ou texto.docx.'}},
-  {id:'D', left:{ico:'🖥️',txt:'Mesa de trabalho'},   right:{ico:'🏠',txt:'Analogia da RAM: onde o computador "trabalha" com os dados no momento.'}},
+  {id:'A', left:{ico:'🧠',txt:'Memória RAM'},        right:{ico:'🕐',txt:'Guarda as coisas só enquanto o computador está ligado. Se desligar, ela esquece!'}},
+  {id:'B', left:{ico:'💾',txt:'HD ou SSD'},           right:{ico:'📦',txt:'Onde tudo fica guardado para sempre, como suas fotos, jogos e tarefas.'}},
+  {id:'C', left:{ico:'📄',txt:'Arquivo'},              right:{ico:'💿',txt:'É o nome de qualquer foto, música, jogo ou documento salvo no computador.'}},
+  {id:'D', left:{ico:'🖥️',txt:'Mesa de trabalho'},   right:{ico:'🏠',txt:'É como uma mesa: o computador usa esse espaço para trabalhar com as coisas naquele momento.'}},
 ];
 let matchSel=null; let matchDone={}; let matchScore=0; let matchCount=0;
 const rightOrder=[...pairs].sort(()=>Math.random()-0.5);
@@ -417,9 +417,9 @@ const tfData=[
   {t:'O HD e o SSD guardam os arquivos de forma permanente.',a:'V',
    ok:'Isso mesmo! HD e SSD são o armazenamento permanente.',
    nok:'Errado! HD e SSD guardam arquivos de forma permanente.'},
-  {t:'Quando salvamos um arquivo de texto, cada letra vira um código binário (0s e 1s).',a:'V',
-   ok:'Correto! Tudo no computador vira 0 e 1.',
-   nok:'Errado! Sim, cada letra é convertida em código binário.'},
+  {t:'Quando guardamos um texto no computador, cada letra vira números especiais, só 0 e 1.',a:'V',
+   ok:'Correto! O computador entende tudo usando números especiais: 0 e 1.',
+   nok:'Errado! As letras viram números especiais (0 e 1) para o computador entender.'},
   {t:'Não é necessário salvar um arquivo porque a RAM já guarda tudo para sempre.',a:'F',
    ok:'Exato! A RAM é temporária, por isso devemos salvar no HD/SSD.',
    nok:'Errado! A RAM apaga tudo ao desligar, por isso precisamos salvar.'},
@@ -479,10 +479,10 @@ const gapQ=[
    g:'permanente',ops:['permanente','temporária','binária'],
    ok:'Correto! HD e SSD guardam dados de forma permanente.',
    nok:'Errado! HD e SSD guardam de forma permanente.'},
-  {antes:'Uma foto guardada no computador tem cada ponto chamado de',depois:'com um código de cores.',
+  {antes:'Uma foto guardada no computador tem cada pontinho de cor chamado de',depois:'.',
    g:'pixel',ops:['pixel','byte','arquivo'],
-   ok:'Isso! Cada ponto de uma imagem é chamado de pixel.',
-   nok:'Errado! Cada ponto da imagem é um pixel.'},
+   ok:'Isso mesmo! Cada pontinho de cor de uma imagem se chama pixel.',
+   nok:'Errado! O nome certo é pixel.'},
   {antes:'Quando desligamos o computador sem salvar, as informações da',depois:'são perdidas.',
    g:'RAM',ops:['RAM','HD','SSD'],
    ok:'Exato! A RAM perde tudo ao desligar.',
@@ -599,7 +599,7 @@ const seqCorreta=[
   {ico:'⌨️', txt:'Você abre o computador e começa a digitar um texto'},
   {ico:'🧠', txt:'O texto vai para a memória RAM enquanto você escreve'},
   {ico:'💾', txt:'Você clica em "Salvar" para não perder o trabalho'},
-  {ico:'🔄', txt:'O texto é convertido em 0s e 1s (código binário)'},
+  {ico:'🔄', txt:'O texto vira números especiais que só usam 0 e 1'},
   {ico:'📦', txt:'O arquivo é gravado no HD ou SSD de forma permanente'},
 ];
 let seqOrder=[...seqCorreta].sort(()=>Math.random()-0.5);
@@ -744,10 +744,10 @@ function showResult(){
   document.getElementById('pts').textContent=total.toFixed(1)+' / 10';
 
   let stars,msg,sub;
-  if(total>=9){stars='⭐⭐⭐';msg='Excelente domínio do conteúdo!';sub='Você entendeu muito bem como o computador guarda dados. Parabéns!';}
-  else if(total>=7){stars='⭐⭐';msg='Bom domínio do conteúdo!';sub='Muito bem! Revise os conceitos que errou para fixar ainda mais.';}
-  else if(total>=5){stars='⭐';msg='Domínio parcial. Recomenda-se revisão.';sub='Releia o conteúdo sobre RAM, HD e arquivos e tente novamente.';}
-  else{stars='📖';msg='Necessita reforço e retomada do conteúdo.';sub='Não desanime! Peça ajuda à professora e reveja o conteúdo.';}
+  if(total>=9){stars='⭐⭐⭐';msg='Uau! Você aprendeu tudo!';sub='Você entendeu super bem como o computador guarda as coisas. Parabéns!';}
+  else if(total>=7){stars='⭐⭐';msg='Muito bem, você aprendeu bastante!';sub='Dê uma olhadinha nas perguntas que errou para aprender ainda mais.';}
+  else if(total>=5){stars='⭐';msg='Você já aprendeu uma parte!';sub='Vamos ler de novo sobre RAM, HD e arquivos e tentar outra vez.';}
+  else{stars='📖';msg='Vamos estudar mais esse assunto!';sub='Não desanime! Peça ajuda para a professora e vamos revisar juntos.';}
   document.getElementById('r-stars').textContent=stars;
   document.getElementById('r-msg').textContent=msg;
   document.getElementById('r-sub').textContent=sub;
